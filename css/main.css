@@ -1,0 +1,1219 @@
+/* Typography
+-----------------------------------------------------------------------*/
+@font-face {
+  font-family: "ShorelinesScriptBold";
+  src: url('../fonts/ShorelinesScriptBold.otf');
+}
+
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%; }
+body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  color: #222; }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-weight: 300; }
+  h1 { font-size: 4.0rem; line-height: 1.5;  letter-spacing: -.1rem;}
+  h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
+  h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
+  h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
+  h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
+  h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
+  /* Larger than phablet */
+  @media (min-width: 550px) {
+    h1 { font-size: 5.0rem; }
+    h2 { font-size: 4.2rem; }
+    h3 { font-size: 3.6rem; }
+    h4 { font-size: 3.0rem; }
+    h5 { font-size: 2.4rem; }
+    h6 { font-size: 1.5rem; }
+  }
+
+  p {
+    margin-top: 0; }
+
+/* Grid
+-----------------------------------------------------------------------*/
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
+  grid-template-areas:
+  "header"
+  "hero"
+  "main"
+  "gallery"
+  "footer";
+}
+
+
+/* Header & Nav
+--------------------------------------*/
+header {
+  grid-area: header;
+  position: fixed;
+  width: 100%;
+  min-height: 100px;
+  background: #fff;
+}
+.logo {
+  background-color: #d3d3d3;
+  max-width: 250px;
+  min-width: 200px;
+  margin-left: 10%;
+  width: 20%;
+  height: 100px;
+  float: left;
+}
+.logo h2 {
+  color: #fff;
+  font-family: 'ShorelinesScriptBold';
+  margin: 0;
+  padding: 20px 5px;
+  text-align: center;
+}
+.navbar {
+  background-color: #fff;
+  display: inline-block;
+  text-align: right;
+  float: right;
+  line-height: 70px;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 5px 20px 0;
+  position: relative;
+  z-index: 2;
+}
+nav ul li {
+  display: inline-block;
+  padding: 5px 15px;
+}
+nav ul li a {
+  clear: right;
+  font-family: 'ShorelinesScriptBold';
+  font-size: 1.5em;
+  color: #d3d3d3;
+  text-decoration: none;
+  line-height: 70px;
+}
+nav ul li a:hover {
+  text-decoration: underline;
+}
+label {
+  color: #d3d3d3;
+  margin: 7px 35px;
+  font-size: 26px;
+  line-height: 70px;
+  display: none;
+  width: 26px;
+  float: right;
+}
+#toggle {
+  display: none;
+}
+@media (max-width: 1058px){
+  label {
+    display: block;
+    cursor: pointer;
+    margin: 7px 30px;
+}
+  header {
+    position: relative;
+  }
+  .hero {
+    margin-top: 0px !important;
+  }
+  nav, .navbar{
+    width: 100%;
+  }
+  nav ul {
+    text-align: center;
+    display: none;
+    overflow: scroll;
+  }
+  nav ul li {
+    display: block;
+    position: relative;
+  }
+  nav ul li a {
+    border-bottom: 1px solid #EAEAEB;
+    margin: 0;
+  }
+  #toggle:checked + nav ul {
+    display: block;
+    overflow: scroll;
+  }
+}
+/* Hero
+-----------------------------------------------------------------------*/
+
+.hero {
+  grid-area: hero;
+  margin-top: 100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 50px);
+}
+
+.about .hero,
+.photos .hero,
+.singing .hero {
+  grid-template-rows: 100px;
+}
+
+@media screen and (min-width: 760px) {
+  .homepage .hero,
+  .yoga .hero,
+  .jars .hero {
+    grid-template-rows: repeat(6, 125px);
+  }
+  .yoga .banner {
+    background-position: center;
+  }
+}
+/* Banner -----------*/
+
+.banner {
+  background-size: cover;
+  width: 100%;
+}
+
+.homepage .banner,
+.yoga .banner,
+.jars .banner {
+  grid-row: 1 / 7;
+  grid-column: 1 / 13;
+}
+
+.about .banner,
+.photos .banner,
+.singing .banner {
+  grid-row: 1;
+  grid-column: 1 / 13;
+  text-align: center;
+}
+
+.banner h1 {
+  padding: 20px 0;
+  font-family: 'ShorelinesScriptBold';
+  color: #808080;
+}
+
+.singing .banner  { background-image: url('../img/wall1-pa.jpg');    }
+.about .banner    { background-image: url('../img/wall1-pa.jpg');    }
+.photos .banner   { background-image: url('../img/wall1-pa.jpg');    }
+.yoga .banner     { background-image: url('../img/misc5-pa.jpg');
+  background-position: center;
+}
+.jars .banner     { background-image: url('../img/jars3-pa.jpg');
+  background-position: center;
+}
+.homepage .banner { background-image: url('../img/full-background-pa.jpg'); }
+
+/* Heading --------*/
+.heading {
+  font-family: 'ShorelinesScriptBold';
+  text-align: center;
+  grid-row: 2;
+}
+.heading h1 {
+  font-size: 4.0rem;
+  color: #d3d3d3;
+}
+@media screen and (min-width: 760px) {
+  .heading h1 {
+    font-size: 6.0rem;
+  }
+}
+@media screen and (min-width: 1058px) {
+  .heading h1 {
+    font-size: 7.0rem;
+  }
+}
+.jars .heading h1 {
+  color: #fff;
+}
+.homepage .heading  { grid-column: 2 / 6; }
+.jars .heading      { grid-column: 2 / 12; }
+.yoga .heading      { grid-column: 2 / 12; }
+
+/* Main
+-----------------------------------------------------------------------*/
+
+.main {
+  grid-area: main;
+  grid-template-columns: 5px repeat(12, 1fr) 5px;
+  grid-template-rows: 20px repeat(20, auto);
+}
+
+/* Photos & Text
+--------------------------------------*/
+.main span {
+  font-family: 'Poiret One';
+  font-size: 3.0rem;
+  color: #808080;
+  text-shadow: 2px 2px 12px;
+  background-color: #e6e6e6;
+  box-shadow: 2px 2px 12px;
+  border-radius: 10px;
+  margin: 12% 5%;
+  float: left;
+  padding: 5%;
+  width: 90%;
+  text-align: center;
+}
+@media screen and (min-width: 760px) {
+  .main span {
+    font-size: 4.5rem;
+  }
+}
+.main img {
+  width: 40%;
+}
+.main p {
+  font-family: 'Poiret One';
+  font-size: 1.8rem;
+  color: #808080;
+  margin: 5%;
+}
+@media screen and (min-width: 760px) {
+  .main p {
+    font-size: 2.0rem;
+  }
+}
+@media screen and (min-width: 1058px) {
+  .main p {
+    font-size: 2.5rem;
+  }
+}
+.main #smiling img {
+  float: left;
+  margin: 10% 5% 0 10%;
+}
+.main #korean img {
+  float: right;
+  margin: 0 10% 0 5%;
+}
+.main #crosslegged img {
+  float: left;
+  margin: 0 5% 0 10%;
+}
+.main #updog img {
+  float: left;
+  margin: 10% 5% 0 10%;
+}
+.main #treepose img {
+  float: right;
+  margin: 0 10% 0 5%;
+}
+.main #group img {
+  float: left;
+  margin: 0 5% 0 10%;
+}
+.main #elbowsmile img {
+  float: right;
+  margin: 10% 10% 2.5% 5%;
+}
+.main #mattguitar img {
+  float: left;
+  margin: 10% 5% 5% 10%;
+}
+.main #dressedup img {
+  float: right;
+  margin: 0 10% 5% 5%;
+}
+.menujars {
+  font-family: 'Poiret One';
+  color: #808080;
+  grid-column: 3 / 13;
+  grid-row: 9 / 15;
+  margin-top: 5%;
+}
+.menujars h1 {
+  font-size: 1.8rem;
+}
+.menujars p {
+  font-size: 1.0rem;
+  float: right;
+  width: 58%;
+  padding-left: 5%;
+  margin: 0;
+}
+.menujars img {
+  width: 35%;
+  margin-left: 5%;
+}
+@media screen and (min-width: 760px) {
+  .menujars h1 {
+    font-size: 3.0rem;
+  }
+  .menujars p {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (min-width: 1058px) {
+  .menujars h1 {
+    font-size: 4.0rem;
+  }
+  .menujars p {
+    font-size: 2.3rem;
+  }
+}
+.bloomingberries {
+  position: relative;
+  z-index: -1;
+}
+.bloomingberries h1 {
+  position: absolute;
+  top: 0;
+  left: 42%;
+  z-index: -1;
+}
+.bloomingberries p {
+  position: absolute;
+  top: 30%;
+  left: 37%;
+  z-index: -1;
+}
+.bloomingberries img {
+  grid-row: 9 / 10;
+}
+.southwestkick {
+  position: relative;
+  z-index: -1;
+}
+.southwestkick h1 {
+  position: absolute;
+  top: 0;
+  left: 42%;
+  z-index: -1;
+}
+.southwestkick p {
+  position: absolute;
+  top: 30%;
+  left: 37%;
+  z-index: -1;
+}
+.southwestkick img {
+  grid-row: 10 / 11;
+}
+.birdsnest {
+  position: relative;
+  z-index: -1;
+}
+.birdsnest h1 {
+  position: absolute;
+  top: 0;
+  left: 42%;
+  z-index: -1;
+}
+.birdsnest p {
+  position: absolute;
+  top: 30%;
+  left: 37%;
+  z-index: -1;
+}
+.birdsnest img {
+  grid-row: 11 / 12;
+}
+.goddessgrub {
+  position: relative;
+  z-index: -1;
+}
+.goddessgrub h1 {
+  position: absolute;
+  top: 0;
+  left: 42%;
+  z-index: -1;
+}
+.goddessgrub p {
+  position: absolute;
+  top: 30%;
+  left: 37%;
+  z-index: -1;
+}
+.goddessgrub img {
+  grid-row: 12 / 13;
+}
+.urbangarden {
+  position: relative;
+  z-index: -1;
+}
+.urbangarden h1 {
+  position: absolute;
+  top: 0;
+  left: 42%;
+  z-index: -1;
+}
+.urbangarden p {
+  position: absolute;
+  top: 30%;
+  left: 37%;
+  z-index: -1;
+}
+.urbangarden img {
+  grid-row: 13 / 14;
+}
+.cleanmachine {
+  position: relative;
+  z-index: -1;
+}
+.cleanmachine h1 {
+  position: absolute;
+  top: 0;
+  left: 42%;
+  z-index: -1;
+}
+.cleanmachine p {
+  position: absolute;
+  top: 30%;
+  left: 37%;
+  z-index: -1;
+}
+.cleanmachine img {
+  grid-row: 14 / 15;
+}
+.singing .secondphoto {
+  grid-row: 7 / 11;
+}
+/*Photo Gallery page
+-------------------------------------------------------*/
+.gallery {
+  grid-area: gallery;
+  display: grid;
+  grid-template-columns: 5px repeat(12, 1fr) 5px;
+  grid-template-rows: 20px repeat(25, 50px);
+  grid-gap: 5px;
+}
+.gallery section {
+  display: grid;
+}
+#kindergarten {
+  background: url('../img/photos3-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 2 / 7;
+  grid-row: 2 / 6;
+}
+#boardwalk {
+  background: url('../img/photos10-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 7 / 14;
+  grid-row: 2 / 5;
+}
+#improvfloor {
+  background: url('../img/photos2-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 7 / 14;
+  grid-row: 5 / 9;
+}
+#improvhat {
+  background: url('../img/photos5-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 2 / 7;
+  grid-row: 6 / 9;
+}
+#warrior {
+  background: url('../img/yoga3-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 2 / 14;
+  grid-row: 9 / 13;
+}
+#easy {
+  background: url('../img/yoga11-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 2 / 8;
+  grid-row: 13 / 16;
+}
+#mountain {
+  background: url('../img/photos6-pa.jpg');
+  background-size: cover;
+  background-position: right;
+  grid-column: 8 / 14;
+  grid-row: 13 / 16;
+}
+#kingpigeon {
+  background: url('../img/yoga1-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 2 / 10;
+  grid-row: 16 / 20;
+}
+#nineties {
+  background: url('../img/photos9-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 10 / 14;
+  grid-row: 16 / 20;
+}
+#kungfu {
+  background: url('../img/photos4-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 2 / 7;
+  grid-row: 20 / 22;
+}
+#wallgaze {
+  background: url('../img/yoga10-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 7 / 14;
+  grid-row: 20 / 24;
+}
+#outside {
+  background: url('../img/singing4-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 2 / 7;
+  grid-row: 22 / 24;
+}
+#boundangle {
+  background: url('../img/photos1-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 2 / 8;
+  grid-row: 24 / 27;
+}
+#cast {
+  background: url('../img/photos11-pa.jpg');
+  background-size: cover;
+  background-position: center;
+  grid-column: 8 / 14;
+  grid-row: 24 / 27;
+}
+@media screen and (min-width: 550px) {
+  .gallery {
+    grid-area: gallery;
+    display: grid;
+    grid-template-columns: 5px repeat(12, 1fr) 5px;
+    grid-template-rows: 20px repeat(45, 50px);
+    grid-gap: 5px;
+  }
+  .gallery section {
+    display: grid;
+  }
+  #kindergarten {
+    background: url('../img/photos3-pa.jpg');
+    background-size: cover;
+    background-position: top;
+    grid-column: 2 / 7;
+    grid-row: 2 / 8;
+  }
+  #boardwalk {
+    background: url('../img/photos10-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 7 / 14;
+    grid-row: 2 / 7;
+  }
+  #improvfloor {
+    background: url('../img/photos2-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 7 / 14;
+    grid-row: 7 / 13;
+  }
+  #improvhat {
+    background: url('../img/photos5-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 7;
+    grid-row: 8 / 13;
+  }
+  #warrior {
+    background: url('../img/yoga3-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 14;
+    grid-row: 13 / 21;
+  }
+  #easy {
+    background: url('../img/yoga11-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 8;
+    grid-row: 21 / 26;
+  }
+  #mountain {
+    background: url('../img/photos6-pa.jpg');
+    background-size: cover;
+    background-position: right;
+    grid-column: 8 / 14;
+    grid-row: 21 / 26;
+  }
+  #kingpigeon {
+    background: url('../img/yoga1-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 10;
+    grid-row: 26 / 33;
+  }
+  #nineties {
+    background: url('../img/photos9-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 10 / 14;
+    grid-row: 26 / 33;
+  }
+  #kungfu {
+    background: url('../img/photos4-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 7;
+    grid-row: 33 / 37;
+  }
+  #wallgaze {
+    background: url('../img/yoga10-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 7 / 14;
+    grid-row: 33 / 41;
+  }
+  #outside {
+    background: url('../img/singing4-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 7;
+    grid-row: 37 / 41;
+  }
+  #boundangle {
+    background: url('../img/photos1-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 8;
+    grid-row: 41 / 47;
+  }
+  #cast {
+    background: url('../img/photos11-pa.jpg');
+    background-size: cover;
+    background-position: top;
+    grid-column: 8 / 14;
+    grid-row: 41 / 47;
+  }
+}
+@media screen and (min-width: 760px) {
+  .gallery {
+    grid-area: gallery;
+    display: grid;
+    grid-template-columns: 5px repeat(12, 1fr) 5px;
+    grid-template-rows: 20px repeat(20, 100px);
+    grid-gap: 5px;
+  }
+  .gallery section {
+    display: grid;
+  }
+  #kindergarten {
+    background: url('../img/photos3-pa.jpg');
+    background-size: cover;
+    background-position: top;
+    grid-column: 2 / 6;
+    grid-row: 2 / 6;
+  }
+  #boardwalk {
+    background: url('../img/photos10-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 6 / 10;
+    grid-row: 2 / 5;
+  }
+  #improvfloor {
+    background: url('../img/photos2-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 10 / 14;
+    grid-row: 2 / 5;
+  }
+  #improvhat {
+    background: url('../img/photos5-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 6;
+    grid-row: 6 / 9;
+  }
+  #warrior {
+    background: url('../img/yoga3-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 6 / 14;
+    grid-row: 5 / 9;
+  }
+  #easy {
+    background: url('../img/yoga11-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 10 / 14;
+    grid-row: 9 / 11;
+  }
+  #kingpigeon {
+    background: url('../img/yoga1-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 8;
+    grid-row: 9 / 12;
+  }
+  #nineties {
+    background: url('../img/photos9-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 8 / 10;
+    grid-row: 9 / 12;
+  }
+  #mountain {
+    background: url('../img/photos6-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 10 / 14;
+    grid-row: 11 / 13;
+  }
+  #wallgaze {
+    background: url('../img/yoga10-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 7 / 14;
+    grid-row: 13 / 18;
+  }
+  #kungfu {
+    background: url('../img/photos4-pa.jpg');
+    background-size: cover;
+    background-position: right;
+    grid-column: 2 / 7;
+    grid-row: 12 / 15;
+  }
+  #outside {
+    background: url('../img/singing4-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 7;
+    grid-row: 15 / 18;
+  }
+  #boundangle {
+    background: url('../img/photos1-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 9;
+    grid-row: 18 / 22;
+  }
+  #cast {
+    background: url('../img/photos11-pa.jpg');
+    background-size: cover;
+    background-position: top;
+    grid-column: 9 / 14;
+    grid-row: 18 / 22;
+  }
+}
+@media screen and (min-width: 1058px) {
+  .gallery {
+    grid-area: gallery;
+    display: grid;
+    grid-template-columns: 5px repeat(12, 1fr) 5px;
+    grid-template-rows: 20px repeat(23, 100px);
+    grid-gap: 5px;
+  }
+  .gallery section {
+    display: grid;
+  }
+  #improvhat {
+    background: url('../img/photos5-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 6;
+    grid-row: 6 / 10;
+  }
+  #warrior {
+    background: url('../img/yoga3-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 6 / 14;
+    grid-row: 5 / 10;
+  }
+  #easy {
+    background: url('../img/yoga11-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 10 / 14;
+    grid-row: 10 / 13;
+  }
+  #kingpigeon {
+    background: url('../img/yoga1-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 8;
+    grid-row: 10 / 14;
+  }
+  #nineties {
+    background: url('../img/photos9-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 8 / 10;
+    grid-row: 10 / 14;
+  }
+  #mountain {
+    background: url('../img/photos6-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 10 / 14;
+    grid-row: 13 / 16;
+  }
+  #wallgaze {
+    background: url('../img/yoga10-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 7 / 14;
+    grid-row: 16 / 21;
+  }
+  #kungfu {
+    background: url('../img/photos4-pa.jpg');
+    background-size: cover;
+    background-position: right;
+    grid-column: 2 / 7;
+    grid-row: 14 / 17;
+  }
+  #outside {
+    background: url('../img/singing4-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 7;
+    grid-row: 17 / 21;
+  }
+  #boundangle {
+    background: url('../img/photos1-pa.jpg');
+    background-size: cover;
+    background-position: center;
+    grid-column: 2 / 9;
+    grid-row: 21 / 25;
+  }
+  #cast {
+    background: url('../img/photos11-pa.jpg');
+    background-size: cover;
+    background-position: top;
+    grid-column: 9 / 14;
+    grid-row: 21 / 25;
+  }
+}
+/* Footer
+-----------------------------------------------------------------------*/
+
+footer {
+  display: inline-block;
+  grid-area: footer;
+  background: url('../img/brick-background-pa.jpg');
+  background-size: cover;
+  font-family: 'Poiret One';
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 50px;
+}
+.socialmedia ul {
+  -webkit-padding-start: 0;
+}
+.socialmedia ul li {
+  display: inline;
+  text-decoration: none;
+}
+
+/* .address {
+  border-right: #383838 solid 2px;
+}
+.name {
+  border-right: #383838 solid 2px;
+} */
+
+/* ------- END OF INDEX CSS --------------------------- */
+
+
+
+/*
+--------------------------------------*/
+
+
+
+/*.about .firstphoto,
+.yoga .firstphoto {
+  grid-column: 3 / 7;
+  grid-row: 2 / 7;
+}
+.about .firstphoto,
+.yoga .firstphoto img {
+  width: 100%;
+}
+.about .firsttext,
+.yoga .firsttext {
+  font-family: 'Poiret One';
+  font-size: 1.8rem;
+  color: #808080;
+  padding-left: 5px;
+  grid-column: 7 / 13;
+  grid-row: 2 / 7;
+  margin-left: 5%;
+}
+.about .secondtext {
+  font-family: 'Poiret One';
+  font-size: 1.8rem;
+  color: #808080;
+  grid-column: 3 / 8;
+  grid-row: 7 / 9;
+  margin-right: 5%;
+}
+.about .secondphoto {
+  grid-column: 8 / 13;
+  grid-row: 5 / 9;
+}
+.about .secondphoto img {
+  width: 100%;
+}
+.about .thirdphoto {
+  grid-column: 3 / 8;
+  grid-row: 9 / 16;
+}
+.about .thirdphoto img {
+  width: 100%;
+}
+.about .thirdtext {
+  font-family: 'Poiret One';
+  font-size: 1.8rem;
+  color: #808080;
+  grid-column: 8 / 13;
+  grid-row: 9 / 16;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+.yoga .secondtext {
+  grid-column: 3 / 9;
+  margin-top: 5%;
+}
+.yoga .secondphoto {
+  grid-column: 9 / 13;
+  grid-row: 7 / 9;
+  margin-top: 5%;
+}
+.yoga .thirdphoto {
+  grid-column: 3 / 7;
+  grid-row: 9 / 13;
+  margin-top: 5%;
+}
+.yoga .thirdtext {
+  grid-column: 7 / 13;
+}
+.jarsinfo {
+  grid-column: 3 / 13;
+  grid-row: 2 / 8;
+}
+.jarsinfo img {
+  float: right;
+  margin: 10% 10% 5% 5%;
+}
+.firsttext {
+  background-color: #d3d3d3;
+  font-family: 'Poiret One';
+  font-size: 1.4em;
+  color: #808080;
+  grid-column: 10 / 18;
+  grid-row: 1 / 5;
+  padding: 0 5%;
+}
+.firsttext p {
+  font-family: 'Poiret One';
+  font-size: 1.4em;
+  color: #808080;
+  margin: 3%;
+}
+.firsttext {
+  background-color: #d3d3d3;
+  grid-column: 6 / 9;
+  grid-row: 1 / 7;
+}
+.firsttext {
+  background-color: #abd3aa;
+  grid-column: 6 / 9;
+  grid-row: 1 / 5;
+}
+
+.firstphoto {
+  background: url('../img/photos-jars1-pa.jpg');
+  background-size: cover;
+  grid-column: 2 / 6;
+  grid-row: 1 / 5;
+}
+.secondtext {
+  background-color: #d3d3d3;
+  grid-column: 2 / 9;
+  grid-row: 5 / 8;
+}
+.secondtext p {
+  font-family: 'Poiret One';
+  font-size: 1.4em;
+  color: #808080;
+  margin: 1%;
+  margin-top: 0;
+}
+.secondphoto{
+  background: url('../img/photos-jars4-pa.jpg');
+  background-size: cover;
+  grid-column: 2 / 4;
+  grid-row: 8 / 10;
+  justify-content: center;
+}
+.thirdphoto{
+  background: url('../img/photos-jars5-pa.jpg');
+  background-size: cover;
+  grid-column: 2 / 4;
+  grid-row: 10 / 12;
+}
+.fourthphoto {
+  background: url('../img/photos-jars6-pa.jpg');
+  background-size: cover;
+  grid-column: 2 / 4;
+  grid-row: 12 / 14;
+}
+.fifthphoto {
+  background: url('../img/photos-jars7-pa.jpg');
+  background-size: cover;
+  grid-column: 2 / 4;
+  grid-row: 14 / 16;
+}
+.sixthphoto {
+  background: url('../img/photos-jars8-pa.jpg');
+  background-size: cover;
+  grid-column: 2 / 4;
+  grid-row: 16 / 18;
+}
+.seventhphoto {
+  background: url('../img/photos-jars9-pa.jpg');
+  background-size: cover;
+  grid-column: 2 / 4;
+  grid-row: 18 / 20;
+}
+.firstphoto {
+  background: url('../img/photos-misc1-pa.jpg');
+  background-size: cover;
+  grid-column: 1 / 5;
+  grid-row: 1 / 7;
+}
+.secondphoto {
+  background: url('../img/photos-misc2-pa.jpg');
+  background-size: cover;
+  grid-column: 5 / 9;
+  grid-row: 1 / 4;
+}
+.thirdphoto {
+  background: url('../img/photos-misc3-pa.jpg');
+  background-size: cover;
+  grid-column: 9 / 13;
+  grid-row: 1 / 4;
+}
+.fourthphoto {
+  background: url('../img/photos-misc5-pa.jpg');
+  background-size: cover;
+  grid-column: 5 / 13;
+  grid-row: 4 / 10;
+}
+.fifthphoto {
+  background: url('../img/photos-misc4-pa.jpg');
+  background-size: cover;
+  grid-column: 1 / 5;
+  grid-row: 7 / 11;
+}
+.sixthphoto {
+  background: url('../img/photos-misc7-pa.jpg');
+  background-size: cover;
+  grid-column: 1 / 6;
+  grid-row: 11 / 16;
+}
+.seventhphoto {
+  background: url('../img/photos-misc6-pa.jpg');
+  background-size: cover;
+  grid-column: 6 / 10;
+  grid-row: 10 / 16;
+}
+.eighthphoto {
+  background: url('../img/photos-bio1-pa.jpg');
+  background-size: cover;
+  grid-column: 10 / 13;
+  grid-row: 10 / 16;
+}
+.firstphoto {
+  background: url('../img/photos-singing2-pa.jpg');
+  background-size: cover;
+  grid-column: 2 / 10;
+  grid-row: 1 / 6;
+}
+.secondphoto {
+  background: url('../img/photos-singing1-pa.jpg');
+  background-size: cover;
+  grid-column: 10 / 18;
+  grid-row: 5 / 11;
+}
+.secondtext {
+  background-color: #d3d3d3;
+  font-family: 'Poiret One';
+  font-size: 1.4em;
+  color: #808080;
+  padding: 0 5%;
+  grid-column: 2 / 10;
+  grid-row: 6 / 9;
+}
+.firstphoto {
+  background: url('../img/photos-yoga2-pa.jpg');
+  background-size: cover;
+  grid-column: 2 / 6;
+  grid-row: 1 / 5;
+}
+.secondtext {
+  background-color: #f0f0f0;
+  grid-column: 2 / 5;
+  grid-row: 5 / 10;
+}
+.secondtext p {
+  color: #808080;
+  font-family: 'Poiret One';
+  font-size: 1.4em;
+  margin: 5%;
+}
+.secondphoto {
+  background: url('../img/photos-yoga6-pa.jpg');
+  background-size: cover;
+  grid-column: 5 / 9;
+  grid-row: 5 / 10;
+}
+.thirdphoto {
+  background: url('../img/photos-yoga4-pa.jpg');
+  background-size: cover;
+  grid-column: 2 / 6;
+  grid-row: 10 / 15;
+}
+.thirdtext {
+  background-color: #abd3aa;
+  grid-column: 6 / 9;
+  grid-row: 10 / 15;
+}
+.thirdtext p {
+  color: #808080;
+  font-family: 'Poiret One';
+  font-size: 1.5em;
+  margin: 5%;
+} */
